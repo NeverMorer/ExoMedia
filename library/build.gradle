@@ -19,6 +19,18 @@ static def getLibraryInfo() {
     return new LibraryInfo()
 }
 
+repositories {
+
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+
+    jcenter()
+    google()
+}
+
+
 dependencies {
     implementation "com.android.support:support-media-compat:$rootProject.ext.supportLibVersion"
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
@@ -27,7 +39,7 @@ dependencies {
     api "com.google.android.exoplayer:exoplayer-core:$rootProject.ext.exoPlayerVersion"
     api "com.google.android.exoplayer:exoplayer-dash:$rootProject.ext.exoPlayerVersion"
     api "com.google.android.exoplayer:exoplayer-hls:$rootProject.ext.exoPlayerVersion"
-    api "com.google.android.exoplayer:exoplayer-smoothstreaming:$rootProject.ext.exoPlayerVersion"
+    api "com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.0"
 }
 
 android {

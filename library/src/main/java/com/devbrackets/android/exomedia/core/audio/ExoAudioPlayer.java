@@ -48,8 +48,6 @@ import java.util.Map;
 public class ExoAudioPlayer implements AudioPlayerApi {
     @NonNull
     protected final ExoMediaPlayer exoMediaPlayer;
-    @NonNull
-    protected final Context context;
 
     protected ListenerMux listenerMux;
 
@@ -59,11 +57,17 @@ public class ExoAudioPlayer implements AudioPlayerApi {
     protected boolean playRequested = false;
 
     public ExoAudioPlayer(@NonNull Context context) {
-        this.context = context;
 
         exoMediaPlayer = new ExoMediaPlayer(context);
         exoMediaPlayer.setMetadataListener(internalListeners);
         exoMediaPlayer.setBufferUpdateListener(internalListeners);
+    }
+
+    public ExoAudioPlayer(@NonNull ExoMediaPlayer exoMediaPlayer) {
+
+        this.exoMediaPlayer = exoMediaPlayer;
+        this.exoMediaPlayer.setMetadataListener(internalListeners);
+        this.exoMediaPlayer.setBufferUpdateListener(internalListeners);
     }
 
     @Override
